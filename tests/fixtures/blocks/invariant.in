@@ -1,0 +1,20 @@
+Invariant [bottom],[ontable[block],holding[block],on[block,block]];0
+Invariant [top],[clear[block],holding[block],on[block,*block]];0
+
+Action PICK-UP[block]
+Inv [bottom];0->1;0
+Inv [top];0->1;0
+
+Action PUT-DOWN[block]
+Inv [bottom];1->0;0
+Inv [top];1->0;0
+
+Action STACK[block,block]
+Inv [bottom];1->2;0
+Inv [top];0->2;1
+Inv [top];1->0;0
+
+Action UNSTACK[block,block]
+Inv [bottom];2->1;0
+Inv [top];2->0;1
+Inv [top];0->1;0

@@ -1,0 +1,13 @@
+Invariant [mover],[here[mover,0]];0
+Invariant [load],[here[load,0],carrying[load,mover]];0
+
+Action GO[mover,0,0]
+Inv [mover],[here[mover,0]];0->0
+
+Action GRAB[mover,0,load]
+Inv [mover],[here[mover,0]];0->0
+Inv [load],[here[load,0],carrying[load,mover]];0->1
+
+Action STASH[mover,0,load]
+Inv [mover],[here[mover,0]];0->0
+Inv [load],[here[load,0],carrying[load,mover]];1->0

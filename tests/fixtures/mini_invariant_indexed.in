@@ -1,0 +1,13 @@
+Invariant [3],[here[3,1]];0
+Invariant [4],[here[4,1],carrying[4,3]];0
+
+Action GO[3,1,1]
+Inv [3],[here[3,1]];0->0
+
+Action GRAB[3,1,4]
+Inv [3],[here[3,1]];0->0
+Inv [4],[here[4,1],carrying[4,3]];0->1
+
+Action STASH[3,1,4]
+Inv [3],[here[3,1]];0->0
+Inv [4],[here[4,1],carrying[4,3]];1->0

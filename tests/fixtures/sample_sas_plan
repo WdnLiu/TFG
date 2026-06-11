@@ -1,0 +1,4 @@
+(pick-up a1 b)
+(move a1 b a)
+(drop a1 a item1)
+; cost = 3 (unit cost)
