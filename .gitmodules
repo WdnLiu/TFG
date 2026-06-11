@@ -1,0 +1,9 @@
+[submodule "external/downward"]
+	path = external/downward
+	url = https://github.com/aibasel/downward.git
+[submodule "external/VAL"]
+	path = external/VAL
+	url = https://github.com/KCL-Planning/VAL.git
+[submodule "external/pddl-to-htn"]
+	path = external/pddl-to-htn
+	url = https://github.com/dloti/pddl-to-htn.git
