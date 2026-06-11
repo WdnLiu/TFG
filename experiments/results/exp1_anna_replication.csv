@@ -1,0 +1,21 @@
+locations,agents,seed,method,ok,plan_length,runtime_s,abstract_length,inserts,level,error
+50,2,0,baseline,True,49,0.2659238930027641,,,,
+50,2,0,pipeline,True,48,8.352849316001084,20,28,2,
+50,4,0,baseline,True,54,0.5162030680003227,,,,
+50,4,0,pipeline,True,53,11.204490177999105,20,33,2,
+50,8,0,baseline,True,50,78.47728869599814,,,,
+50,8,0,pipeline,True,49,12.417521826999291,19,30,2,
+50,16,0,baseline,False,,437.3918279649988,,,,no plan or timeout
+50,16,0,pipeline,True,49,34.0851254879999,19,30,2,
+50,32,0,baseline,False,,473.49731535200044,,,,no plan or timeout
+50,32,0,pipeline,True,56,61.01188306200129,19,37,2,
+100,2,0,baseline,True,49,0.5195014790006098,,,,
+100,2,0,pipeline,True,48,10.815690041999915,20,28,2,
+100,4,0,baseline,True,58,0.7189272699979483,,,,
+100,4,0,pipeline,True,46,14.297034197003086,19,27,2,
+100,8,0,baseline,False,,600.0038646059984,,,,no plan or timeout
+100,8,0,pipeline,True,73,33.30679082200004,20,53,2,
+100,16,0,baseline,False,,600.0033869049985,,,,no plan or timeout
+100,16,0,pipeline,True,67,60.63240305900035,21,46,2,
+100,32,0,baseline,False,,600.0033112989986,,,,no plan or timeout
+100,32,0,pipeline,True,65,109.86961724200228,19,46,2,
