@@ -1,0 +1,11 @@
+Invariant [3],[AT_[3,0]];0
+Invariant [4],[AT_[4,0],IN[4,3]];0
+
+Action MOVE[3,0,0]
+Inv [3],[AT_[3,0]];0->0
+
+Action PICK-UP[3,0,4]
+Inv [4],[AT_[4,0],IN[4,3]];0->1
+
+Action DROP[3,0,4]
+Inv [4],[AT_[4,0],IN[4,3]];1->0

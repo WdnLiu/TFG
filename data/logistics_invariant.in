@@ -1,0 +1,20 @@
+Invariant [package],[at[package,place],in[package,vehicle]];0
+Invariant [vehicle],[at[vehicle,place]];0
+
+Action LOAD-TRUCK[package,vehicle,place]
+Inv [package];0->1;0
+
+Action UNLOAD-TRUCK[package,vehicle,place]
+Inv [package];1->0;0
+
+Action LOAD-AIRPLANE[package,vehicle,place]
+Inv [package];0->1;0
+
+Action UNLOAD-AIRPLANE[package,vehicle,place]
+Inv [package];1->0;0
+
+Action DRIVE-TRUCK[vehicle,place,place,0]
+Inv [vehicle];0->0;0
+
+Action FLY-AIRPLANE[vehicle,place,place]
+Inv [vehicle];0->0;0
