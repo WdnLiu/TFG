@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pddl_tools"
+version = "0.1.0"
+description = "Invariant-driven abstraction for STRIPS planning"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+dev = ["pytest>=8.0", "ruff>=0.15", "coverage>=7.0"]
+
+[project.scripts]
+pddl-pipeline = "pddl_tools.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src"]
+extend-exclude = ["downward", "external"]
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, warnings, isort, bugbear, simplify, pyupgrade, ruff
+select = ["E", "F", "W", "I", "B", "SIM", "UP", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+# experiment scripts prepend src/ to sys.path before importing the package,
+# and use long progress/print lines that read better unwrapped
+"experiments/*" = ["E402", "E501"]
+# tests embed long PDDL string literals
+"tests/*" = ["E501"]
