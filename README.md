@@ -73,6 +73,43 @@ Flags:
 | `--save-files DIR` | write `abstract_domain.pddl`, `abstract_problem.pddl`, `refined_plan.txt` to `DIR` |
 | `--debug` | print the abstract domain and the full plan |
 
+## Outputs
+
+Every run first prints a header identifying the instance:
+
+```
+domain    : <name>  (<path>)
+problem   : <name>
+invariants: <fd|lotinac> [(key=<name>)]
+invariant groups: <N>
+```
+
+If a refined plan validates, the result block lists the metrics below and exits 0:
+
+| Field | Meaning |
+|-------|---------|
+| `valid` | VAL accepted the refined plan (`False` if VAL is unavailable) |
+| `abstract length` | number of steps in the abstract plan returned by Fast Downward |
+| `refined length` | total steps in the refined concrete plan |
+| `(+N inserted)` | concrete steps added by the per-step subplanner during refinement |
+| `levels tried` | abstraction levels walked on the aggressiveness ladder before success |
+| `runtime` | wall-clock time of the whole pipeline, in seconds |
+
+Optional outputs depend on the flags: `--out FILE` writes the refined plan,
+`--save-files DIR` additionally writes `abstract_domain.pddl` and
+`abstract_problem.pddl`, and `--debug` echoes the abstract domain and plan
+to stdout.
+
+If no abstraction level produces a valid refined plan the result block
+reports the cause and exits with a non-zero status:
+
+| Output | Meaning | Exit code |
+|--------|---------|-----------|
+| `no valid plan (N level(s) tried): no abstract plan` | Fast Downward failed (or timed out) on the abstract problem | 1 |
+| `no valid plan (N level(s) tried): <step> refine failed` | the per-step subplanner could not re-establish a dropped precondition | 1 |
+| `no valid plan (N level(s) tried): invalid refined plan` | the refined plan was rejected by VAL | 1 |
+| `error: <message>` (stderr) | the invariant source produced no graph for this domain | 2 |
+
 ## Tests and linting
 
 ```bash
