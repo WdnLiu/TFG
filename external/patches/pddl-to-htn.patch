@@ -1,0 +1,39 @@
+diff --git a/htn/bin/basic.h b/htn/bin/basic.h
+index 9322be9..b4618f0 100644
+--- a/htn/bin/basic.h
++++ b/htn/bin/basic.h
+@@ -21,6 +21,21 @@
+ 
+ #define PI 3.1415926535897932384
+ 
++// forward declarations so the container/pair printers can call one another
++// regardless of definition order (required under strict two-phase lookup)
++template < typename T, typename U >
++std::ostream &operator<<( std::ostream &stream, const std::pair< T, U > &p );
++template < typename T >
++std::ostream &operator<<( std::ostream &stream, const std::list< T > &l );
++template < typename T, typename U >
++std::ostream &operator<<( std::ostream &stream, const std::map< T, U > &m );
++template < typename T >
++std::ostream &operator<<( std::ostream &stream, const std::multiset< T > &s );
++template < typename T >
++std::ostream &operator<<( std::ostream &stream, const std::set< T > &s );
++template < typename T >
++std::ostream &operator<<( std::ostream &stream, const std::vector< T > &v );
++
+ // insert all elements of a collection into a stream
+ template < typename T >
+ void insertAll( std::ostream &stream, const T &begin, const T &end ) {
+diff --git a/htn/bin/create_htn.h b/htn/bin/create_htn.h
+index a427706..9d06a8a 100644
+--- a/htn/bin/create_htn.h
++++ b/htn/bin/create_htn.h
+@@ -2,7 +2,7 @@
+ #include "macro.h"
+ 
+ 
+-#define HTN_DEBUG false
++#define HTN_DEBUG true
+ #define GOAL_DEBUG false
+ #define PRINT_GRAPHS false
+ 

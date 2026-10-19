@@ -1,0 +1,3 @@
+2 initial candidates
+{at_ 0 [1]}
+{at_ 0 [1], in 0 [1]}
