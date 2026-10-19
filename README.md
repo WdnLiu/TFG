@@ -16,6 +16,7 @@ The accompanying thesis is in [`thesis.pdf`](thesis.pdf).
 | `data/` | example PDDL domains, problems and invariant inputs |
 | `experiments/` | benchmark and assembly-grid runners, and their results |
 | `external/` | pinned submodules, plus `patches/` with local `pddl-to-htn` changes |
+| `scripts/` | `build_lotinac.sh`, which patches and builds `create_htn` |
 
 ## Requirements
 
@@ -54,17 +55,12 @@ pip install -e ".[dev]"
 ```
 
 The FD route (`--invariants fd`) works after step 2. The Lotinac route
-(`--invariants lotinac`) additionally needs the local `pddl-to-htn` changes
-(a `basic.h` build fix and `HTN_DEBUG` enabled, so `create_htn` emits the
-invariant graph), saved in `external/patches/`, and a rebuilt `create_htn`:
+(`--invariants lotinac`) additionally needs `create_htn` built from
+`pddl-to-htn` with the local changes in `external/patches/`; one script
+applies them and builds it:
 
 ```bash
-cd external/pddl-to-htn
-git apply ../patches/pddl-to-htn.patch
-cp -r ../patches/pddl-to-htn-fullhabitat htn/domains/fullhabitat
-cd htn
-g++ -O2 -o bin/create_htn bin/create_htn.cpp
-cd ../../..
+./scripts/build_lotinac.sh
 ```
 
 ## Running the pipeline (single instance)
