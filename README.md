@@ -5,6 +5,18 @@ state invariants, building a relaxed abstract domain from them, solving the
 easier abstract problem, and refining the abstract plan back into a valid
 concrete plan (validated with VAL).
 
+The accompanying thesis is in [`thesis.pdf`](thesis.pdf).
+
+## Repository layout
+
+| Path | Contents |
+|------|----------|
+| `src/` | the `pddl_tools` package |
+| `tests/` | component and end-to-end tests |
+| `data/` | example PDDL domains, problems and invariant inputs |
+| `experiments/` | benchmark and assembly-grid runners, and their results |
+| `external/` | pinned submodules, plus `patches/` with local `pddl-to-htn` changes |
+
 ## Requirements
 
 - Python 3.10+
@@ -42,13 +54,16 @@ pip install -e ".[dev]"
 ```
 
 The FD route (`--invariants fd`) works after step 2. The Lotinac route
-(`--invariants lotinac`) additionally needs `create_htn` rebuilt so it emits
-the invariant graph:
+(`--invariants lotinac`) additionally needs the local `pddl-to-htn` changes
+(a `basic.h` build fix and `HTN_DEBUG` enabled, so `create_htn` emits the
+invariant graph), saved in `external/patches/`, and a rebuilt `create_htn`:
 
 ```bash
-cd external/pddl-to-htn/htn
-sed -i 's/#define HTN_DEBUG false/#define HTN_DEBUG true/' bin/create_htn.h
-g++ -O2 -o bin/create_htn bin/create_htn.cpp   # add forward decls to bin/basic.h on g++ >= 13
+cd external/pddl-to-htn
+git apply ../patches/pddl-to-htn.patch
+cp -r ../patches/pddl-to-htn-fullhabitat htn/domains/fullhabitat
+cd htn
+g++ -O2 -o bin/create_htn bin/create_htn.cpp
 cd ../../..
 ```
 
