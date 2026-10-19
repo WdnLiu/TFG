@@ -30,7 +30,7 @@ The external tools are pinned as git submodules:
 |-----------|------|----------|
 | Fast Downward | `external/downward/` | https://github.com/WdnLiu/downward (fork of aibasel/downward) |
 | VAL | `external/VAL/` | https://github.com/WdnLiu/VAL (fork of KCL-Planning/VAL) |
-| pddl-to-htn (Lotinac) | `external/pddl-to-htn/` | https://github.com/dloti/pddl-to-htn |
+| pddl-to-htn (Lotinac) | `external/pddl-to-htn/` | https://github.com/WdnLiu/pddl-to-htn (fork of dloti/pddl-to-htn) |
 
 ## Installing dependencies and building
 

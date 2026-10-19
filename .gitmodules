@@ -6,4 +6,4 @@
 	url = https://github.com/WdnLiu/VAL.git
 [submodule "external/pddl-to-htn"]
 	path = external/pddl-to-htn
-	url = https://github.com/dloti/pddl-to-htn.git
+	url = https://github.com/WdnLiu/pddl-to-htn.git
